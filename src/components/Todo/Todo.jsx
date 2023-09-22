@@ -21,7 +21,7 @@ const Todo = ({ todo, isFinished, changeFinished, onDelete, onEdit }) => {
         <button 
           onClick={() => {
             setIsEditing(!isEditing)
-            onEdit(newInput)
+            if(isEditing) { onEdit(newInput) }
           }}
         > {isEditing ? 'Save' : 'Edit'} </button>
         <button disabled={isEditing} onClick={onDelete} > Delete </button>

@@ -3,8 +3,9 @@ import { TodoContext } from "../../context/TodoContext"
 
 
 const AddTodo = () => {
-  const { list, setList } = useContext(TodoContext)
-  const [inputText, setInputText] = useState('')
+  const { dispatch } = useContext(TodoContext)
+  const [todo, setTodo] = useState('')
+
   
   return (
     <div>
@@ -12,14 +13,14 @@ const AddTodo = () => {
         name="task" 
         id="task" 
         placeholder="Enter todo"
-        value={inputText}
-        onChange={e => setInputText(e.target.value)}
+        value={todo}
+        onChange={e => setTodo(e.target.value)}
       />
       <button 
-        disabled={inputText.length === 0} 
+        disabled={todo.length === 0} 
         onClick={()=>{
-          setList([...list, {id: list.length+1, todoData: inputText, finished: false}])
-          setInputText('')
+          dispatch({type: 'add_todo', payload: {todoText: todo}})
+          // setTodo('')
         }}
       >Add</button>
     </div>
