@@ -18,7 +18,7 @@ const AddTodo = ({ addTodo }) => {
       <button 
         disabled={todo.length === 0} 
         onClick={()=>{
-          addTodo(todo)
+          addTodo({todoText: todo})
           // dispatch({type: 'add_todo', payload: {todoText: todo}})
           setTodo('')
         }}

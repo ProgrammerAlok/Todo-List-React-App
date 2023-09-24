@@ -9,7 +9,8 @@ const TodoList = ({todoFinished, deleteTodo, editTodo}) => {
   
   // const dispatch = useDispatch()
 
-  const list = useSelector(state => state.todo)
+  const list = useSelector(state => state.todo.todoList)
+  // const list = todoSlice.initialState
   console.log(list)
   
   function onFinished(todo, isFinished) {
@@ -23,7 +24,7 @@ const TodoList = ({todoFinished, deleteTodo, editTodo}) => {
     setList(updatedList)
     */
     // dispatch({type: 'finish_todo', payload: {todo, isFinished}})
-    todoFinished(todo, isFinished)
+    todoFinished({todo, isFinished})
   }
   
   function onDelete(todo) {
@@ -32,7 +33,7 @@ const TodoList = ({todoFinished, deleteTodo, editTodo}) => {
     setList(updatedList)
     */
     // dispatch({type: 'delete_todo', payload: {todo}})
-    deleteTodo(todo)
+    deleteTodo({todo})
   }
 
   function onEdit(todo, modifiedTodo) {
@@ -46,7 +47,7 @@ const TodoList = ({todoFinished, deleteTodo, editTodo}) => {
     setList(updatedList)
     */    
     // dispatch({type: 'edit_todo', payload: {todo, todoText: modifiedTodo}})
-    editTodo(todo, modifiedTodo)
+    editTodo({todo, todoText: modifiedTodo})
   }
   
 
